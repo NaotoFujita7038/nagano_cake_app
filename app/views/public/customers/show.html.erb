@@ -1,0 +1,42 @@
+<h2>マイページ</h2>
+<div class="container">
+<div class="row">
+   <table> <tr>
+        <th><h3>登録情報</h3></th>
+        <th>
+        </th>
+    <th><%=link_to "編集する", customers_information_edit_path,class: "btn btn-success btn-sm btn-block mb-3"%>
+    </th>
+    </tr>
+    </table>
+    </div>
+    </div>
+<div class="col">
+<table border="1">
+    <tr>
+        <th class="table-secondary w-25">氏名</th> 
+        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+        <th class="table-secondary">カナ</th>
+         <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+         <th class="table-secondary">郵便番号</th>
+         <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+        <th class="table-secondary">住所</th>
+        <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+         <th class="table-secondary">電話番号</th>
+         <td><% @customer.telephone_number %></td>
+    </tr>
+    <tr>
+        <th class="table-secondary">メールアドレス</th>
+         <td><%= @customer.email %></td>
+    </tr>
+    </div>
+    
+</table>

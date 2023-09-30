@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NaganoCakeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-gray">
+    <div class="container">
+    <div class="row">
+    <a class="navbar-brand" href="/">
+    <span style="border: solid 4px #cccccc;">Nagano  Cake</span>
+    </a>
+    <ul class="navbar-nav ml-auto">
+   <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   </div>
+   <% if customer_signed_in? %>
+   <div class="col"><%=link_to href="/home/about",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   マイページ<% end %>
+   </div>
+   <div class="col"><%=link_to href="/item",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  商品一覧<% end %>
+    </div>
+    
+    <div class="col"><%=link_to href="/customers/sign_up",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  カート<% end %>
+    </div>
+    
+    <div class="col"><%=link_to destroy_customer_session_path, method: :delete ,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  ログアウト<% end %>
+    </div>
+    
+    <% else %>
+   <div class="col"><%=link_to href="/home/about",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   About<% end %>
+   </div>
+   <div class="col"><%=link_to href="/item",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  商品一覧<% end %>
+    </div>
+    
+    <div class="col"><%=link_to href="/customers/sign_up",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  新規登録<% end %>
+    </div>
+    
+    <div class="col"><%=link_to new_customer_session_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+  ログイン<% end %>
+    </div>
+    
+    </div>
+    </div>
+    <% end %>
+  </nav>
+  </table>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  </body>
+</html>
