@@ -7,5 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
  # null: falseを記述したemailの指定がない
-  password:## 任意のパスワード
+ # 任意のパスワード
+  email: "test@test",## 任意のメールアドレス,
+  password: "aaaaaa"## 任意のパスワード
 )

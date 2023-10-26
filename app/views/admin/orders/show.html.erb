@@ -1,0 +1,49 @@
+<h1>注文履歴詳細</h1>
+<storong>購入者</storong>
+<%= @order.customer.last_name %><%= @order.customer.first_name %>
+<strong>注文日</strong>
+ <%=@order.created_at%>
+<strong>配送先</strong>
+<%= "〒"+@order.postal_code+@order.address+@order.name %>
+<strong>支払方法</strong>
+<%= @order.payment_method_i18n%>
+<table class="table borderedtable-">
+        <thead>
+          <tr class="table-active">
+            <th class="table-secondary w-25"><strong>商品名</strong></th>  
+            <th class="table-secondary w-25"><strong>単価（税込）</strong></th>
+            <th class="table-secondary w-25"><strong>数量</strong></th>
+            <th class="table-secondary w-25"><strong>小計</strong></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+             <% @sum = 0 %>
+          <% @order_details.each do  |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%=(order_detail.price) %></td>
+            <td><%=order_detail.quantity %></td>
+            <td><%=(order_detail.price*order_detail.quantity) %></td>
+            <% @sum+=order_detail.price*order_detail.quantity %>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+        
+<table class="table table-bordered">
+  <tr>
+    <th class="table-secondary w-25"><strong>送料</strong></th>
+    <td>800</td>
+  </tr>
+  <tr>
+    <th class="table-secondary w-25"><strong>商品合計</strong></th>
+    <td><%= @sum%></td>
+  </tr>
+  <tr>
+    <th class="table-secondary w-25"><strong>請求金額</strong></th>
+    <td><%= @sum + 800 %></td>
+  </tr>
+</table>
+
+

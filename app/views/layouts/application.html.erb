@@ -23,14 +23,14 @@
    <div class="collapse navbar-collapse" id="navbarNavDropdown">
    </div>
    <% if customer_signed_in? %>
-   <div class="col"><%=link_to href="/home/about",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   <div class="col"><%=link_to customers_mypage_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
    マイページ<% end %>
    </div>
-   <div class="col"><%=link_to href="/item",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   <div class="col"><%=link_to items_path, class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
   商品一覧<% end %>
     </div>
     
-    <div class="col"><%=link_to href="/customers/sign_up",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+    <div class="col"><%=link_to cart_items_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
   カート<% end %>
     </div>
     
@@ -38,11 +38,26 @@
   ログアウト<% end %>
     </div>
     
-    <% else %>
+       <% elsif admin_signed_in? %>
+     <div class="col"><%=link_to admin_items_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   商品一覧<% end %>
+   </div>
+   <div class="col"><%=link_to admin_customers_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   会員一覧<% end %>
+   </div>
    <div class="col"><%=link_to href="/home/about",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   注文履歴一覧<% end %>
+   </div>
+   <div class="col"><%=link_to destroy_admin_session_path, method: :delete ,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   ログアウト<% end %>
+   </div>
+   
+   
+    <% else %>
+   <div class="col"><%=link_to about_path, class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
    About<% end %>
    </div>
-   <div class="col"><%=link_to href="/item",class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
+   <div class="col"><%=link_to items_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
   商品一覧<% end %>
     </div>
     
@@ -53,10 +68,12 @@
     <div class="col"><%=link_to new_customer_session_path,class:"btn btn-outline-secondary btn-sm btn-block mb-3" do%>
   ログイン<% end %>
     </div>
-    
-    </div>
-    </div>
     <% end %>
+    
+  
+     
+      
+    
   </nav>
   </table>
   </header>

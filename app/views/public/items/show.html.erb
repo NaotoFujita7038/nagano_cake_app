@@ -1,0 +1,9 @@
+<p><%= image_tag 'チーズケーキ.jpg', class: 'hoge' %></p>
+<p><%=@item.name%></p>
+<p><%=@item.introduction%></p>
+<p>￥<%=@item.price%>（税込）</p>
+<%= form_with model:@cart_item, local:true do |f| %>
+　<%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.submit"カートに入れる"%>
+<% end %>

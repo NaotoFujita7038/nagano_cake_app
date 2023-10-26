@@ -1,0 +1,31 @@
+<h1>注文履歴一覧</h1>
+<br>
+<div class="container">
+<div class="row">
+<div class="col">
+    <table border="1">
+        <thead>
+    <tr>
+    <th class="table-secondary w-25"><strong>購入日時</strong></th>  
+    <th class="table-secondary w-25"><strong>購入者</strong></th>
+    <th class="table-secondary w-25"><strong>注文個数</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+        <% @orders.each do |order| %>
+    <tr>
+      <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M"), admin_path(order.id) %></td>
+      <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+       <% @sum = 0 %>
+        <% order.order_details.each do |order_detail| %>
+      <% @sum+=order_detail.quantity %>
+      <% end %>
+      <td><%= @sum %></td>
+    </tr>
+  <% end %>
+    
+    </tbody>
+    </table>
+</div>
+</div>
+</div>

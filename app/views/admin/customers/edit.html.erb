@@ -1,0 +1,30 @@
+
+<h1><%=@customer.last_name%> <%=@customer.first_name %>さんの<strong>会員情報編集</strong></h1>
+<br>
+<%= form_with model: @customer ,url: admin_customer_path(@customer.id) do |f| %>
+ <p><h4>会員ID</h4>
+<%=@customer.id%></p>
+  <p><h4>氏名</h4>
+  <%= f.text_field :last_name %>
+  <%= f.text_field :first_name %>
+  </p>
+  <p>フリガナ
+  <%= f.text_field :last_name_kana %>
+  <%= f.text_field :first_name_kana %>
+  </p>
+  <p><strong>郵便番号</strong>
+   <%= f.text_field :postal_code %>
+  </p>
+  <p><strong>住所</strong>
+   <%= f.text_field :address %>
+  </p>
+  <p><strong>電話番号</strong>
+  <%= f.text_field :telephone_number %>
+  </p>
+  <p>メールアドレス
+  <%= f.text_field :email %>
+  </p>
+  <br>
+  <%= f.submit '変更を保存', class:"btn btn-success"  %>
+  <% end %>
+  <%=link_to admin_customer_path(@customer.id) %>

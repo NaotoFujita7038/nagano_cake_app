@@ -1,0 +1,31 @@
+<h1>商品一覧</h1>
+<br>
+<div class="container">
+<div class="row">
+<div class="col">
+    <table border="1">
+        <thead>
+    <tr>
+    <th class="table-secondary w-25"><strong>商品ID</strong></th>  
+    <th class="table-secondary w-25"><strong>商品名</strong></th>
+    <th class="table-secondary w-25"><strong>税抜価格</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+        
+    <% @items.each do |item| %>
+    <tr>
+    <td><%= item.id%></td>
+    <td><%=link_to admin_item_path(item.id) do %>
+    <%=item.name%>
+    <% end %>
+    </td>
+    <td><%= item.price%></td>
+    </tr>
+    <% end %>
+    
+    </tbody>
+    </table>
+</div>
+</div>
+</div>

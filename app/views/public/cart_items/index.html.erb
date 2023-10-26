@@ -1,0 +1,72 @@
+<h1>ショッピングカート</h1>
+<div class="text-right">
+  <%=link_to "カートを空にする", cart_items_destroy_all_path, class:"btn btn-danger",method: :delete %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-active">
+            <th class="table-secondary w-25"><strong>商品名</strong></th>  
+            <th class="table-secondary w-25"><strong>単価（税込）</strong></th>
+            <th class="table-secondary w-25"><strong>数量</strong></th>
+            <th class="table-secondary w-25"><strong>小計</strong></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sum = 0 %>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td>
+               <%= form_with model:cart_item, url:cart_item_path(cart_item.id) , local:true do |f| %>
+                  <%= f.select :amount, *[1..10] %>
+                  <%= f.submit "変更" , class: "btn btn-success" %>
+               <% end %>
+            </td>
+            <td><%= cart_item.subtotal %></td>
+            <td>
+              <% if @cart_item==current_customer %>
+              <%= link_to "削除",cart_items_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+          <%@total += (cart_item.item.price * 1.1).floor * cart_item.amount %>
+          <% end %>
+        </tbody>
+        <!--<th><div class="table-secondary w-25 text-right"></div></th>-->
+        <tbody>
+          <tr>
+              <td style="border:none;"></td>
+              <td style="border:none;"></td>
+              <td style="border:none;"></td>
+              <td>合計金額</td>
+              <td><%=@total%></td>
+          </tr>
+          
+   
+        </tbody>
+        
+        <tbody>
+          <tr>
+            <td style="border:none;"></td>
+            <td style="border:none;"></td>
+            <td> 
+            <%=link_to new_order_path, class:"btn btn-success" do%>注文情報入力に進む
+            <% end %>
+            </td>  
+            <td style="border:none;"></td>
+          </tr>
+     
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+     
+    
