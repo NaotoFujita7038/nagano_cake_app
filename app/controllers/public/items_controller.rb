@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-before_action :authenticate_customer!
+before_action :authenticate_customer!, only: [:show]
 
 def index
     @items=Item.all
@@ -19,7 +19,7 @@ end
 private
   
   def item_params
-    params.require(:item).permit(:name, :image, :introduction, :price)
+    params.require(:item).permit(:name, :image, :introduction, :price,:image)
   end  
 end
 

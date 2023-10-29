@@ -5,20 +5,20 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
 <td><div class="field">
-  <%= f.label :first_name, "名前（姓）" %><br>
-  <%= f.text_field :first_name %>
+  <%= f.label :last_name, "名前（姓）" %><br>
+  <%= f.text_field :last_name %>
 </div></td>
 <div class="field">
-  <%= f.label :last_name, "（名）" %><br>
-  <%= f.text_field :last_name %>
+  <%= f.label :first_name, "（名）" %><br>
+  <%= f.text_field :first_name %>
 </div>
 <div class="field">
-  <%= f.label :first_name_kana, "フリガナ（セイ）" %><br>
-  <%= f.text_field :first_name_kana %>
-</div>
-<div class="field">
-  <%= f.label :last_name_kana, "（メイ）" %><br>
+  <%= f.label :last_name_kana, "フリガナ（セイ）" %><br>
   <%= f.text_field :last_name_kana %>
+</div>
+<div class="field">
+  <%= f.label :first_name_kana, "（メイ）" %><br>
+  <%= f.text_field :first_name_kana %>
 </div>
   <div class="field">
     <%= f.label :email, "メールアドレス" %><br />

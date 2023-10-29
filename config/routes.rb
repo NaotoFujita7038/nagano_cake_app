@@ -20,15 +20,15 @@ devise_for :admin,skip: [:registrations, :passwords], controllers: {
    get '/about' => 'homes#about'
    get '/customers/mypage' => 'customers#show'
    get '/customers/information/edit' => 'customers#edit'
+   patch '/customers/information' => 'customers#update'
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
    get '/orders/confirm' => 'orders#confirm'
    get '/orders/thanks' => 'orders#thanks' 
    get '/customers/check' => 'customers#check'
-   patch '/customers/withdrawa' => 'customers#withdraw' 
+   patch '/customers/withdrawal' => 'customers#withdrawal' 
    
    resources :orders, only:[:new, :index, :show, :create,]
    resources :cart_items, only:[:index, :update, :create, :destroy]
-   resources :customers, only: [:show, :edit, :update,]
    resources :items, only: [:index, :show, ]
    
    #collection do
